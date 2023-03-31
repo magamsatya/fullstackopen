@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:1.23.1-alpine
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - bloglist-frontend
+      - bloglist-backend
+  bloglist-frontend:
+    image: fso-p12-bloglist-frontend-dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+    environment:
+      - PROXY_URL=http://bloglist-backend:3003
+  bloglist-backend:
+    image: fso-p12-bloglist-backend-dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/.env

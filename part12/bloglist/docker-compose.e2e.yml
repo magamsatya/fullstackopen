@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  bloglist-frontend:
+    image: fso-p12-bloglist-frontend-dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    environment:
+      - PROXY_URL=http://bloglist-backend:3003
+  bloglist-backend:
+    image: fso-p12-bloglist-backend-dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./backend/.env
+    command: [ "npm", "run", "start:test"]
+  # bloglist-cypress:
+  #   image: fso-p12-bloglist-frontend-dev
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile.dev
+  #   environment:
+  #     - BACKEND_URL=http://bloglist-backend:3003
+  #     - FRONTEND_URL=http://bloglist-frontend:3004
+  #   command: npm run cypress:run
+  #   depends_on:
+  #     - bloglist-frontend
+  #     - bloglist-backend
+  cypress:
+    image: cypress/included:8.7.0
+    volumes:
+      - ./frontend/cypress.json:/e2e/cypress.json:ro
+      - ./frontend/cypress:/e2e/cypress:ro
+    environment:
+      - BACKEND_URL=http://bloglist-backend:3003
+      - FRONTEND_URL=http://bloglist-frontend:3004
+    depends_on:
+      - bloglist-frontend
+      - bloglist-backend
+    working_dir: /e2e

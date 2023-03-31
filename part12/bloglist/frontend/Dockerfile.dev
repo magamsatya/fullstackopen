@@ -1,0 +1,13 @@
+FROM node:16
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+ENV PROXY_URL=http://host.docker.internal:3003
+
+CMD ["npm", "start"]
+
+EXPOSE 3004
