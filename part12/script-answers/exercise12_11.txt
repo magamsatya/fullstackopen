@@ -1,0 +1,74 @@
+Script started on 2022-08-02 12:56:45+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="209" LINES="58"]
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ c[Kdocker container -l[K[Kls -a
+CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS                   PORTS                                                                    NAMES
+f89b04340e61   redis                      "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes            0.0.0.0:6379->6379/tcp                                                   todo-backend_redis_1
+06dad1a5ce1f   mongo                      "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes            0.0.0.0:3456->27017/tcp                                                  todo-backend_mongo_1
+a1cc9e2c0b0e   ubuntu                     "bash"                   3 hours ago      Exited (0) 3 hours ago                                                                            nervous_ramanujan
+40b25a1fe745   rancher/k3d-proxy:5.2.2    "/bin/sh -c nginx-pr…"   6 months ago     Up 4 hours               0.0.0.0:8081->80/tcp, 0.0.0.0:40261->6443/tcp, 0.0.0.0:8082->30080/tcp   k3d-k3s-default-serverlb
+1d390207d55f   rancher/k3s:v1.21.7-k3s1   "/bin/k3s agent"         6 months ago     Up 4 hours                                                                                        k3d-k3s-default-agent-1
+028b625bd56e   rancher/k3s:v1.21.7-k3s1   "/bin/k3s agent"         6 months ago     Up 4 hours                                                                                        k3d-k3s-default-agent-0
+c4f40be96c5e   rancher/k3s:v1.21.7-k3s1   "/bin/k3s server --t…"   6 months ago     Up 4 hours                                                                                        k3d-k3s-default-server-0
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ docker exec -it f89b bash
+[?2004hroot@f89b04340e61:/data# [Kroot@f89b04340e61:/data# redis-cli
+[?2004l127.0.0.1:6379> [0K127.0.0.1:6379> K[17C[0K127.0.0.1:6379> KE[18C[0K127.0.0.1:6379> KEY[19C[0K127.0.0.1:6379> KEYS[0;90;49m pattern[0m[20C[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m[21C[0K127.0.0.1:6379> KEYS *[0;90;49m [0m[22C[0K127.0.0.1:6379> KEYS *[22C
+1) "added-todos"
+127.0.0.1:6379> [0K127.0.0.1:6379> G[17C[0K127.0.0.1:6379> GE[18C[0K127.0.0.1:6379> GET[0;90;49m key[0m[19C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m [0m[21C[0K127.0.0.1:6379> GET ad[0;90;49m [0m[22C[0K127.0.0.1:6379> GET add[0;90;49m [0m[23C[0K127.0.0.1:6379> GET adde[0;90;49m [0m[24C[0K127.0.0.1:6379> GET added[0;90;49m [0m[25C[0K127.0.0.1:6379> GET added-[0;90;49m [0m[26C[0K127.0.0.1:6379> GET added-t[0;90;49m [0m[27C[0K127.0.0.1:6379> GET added-to[0;90;49m [0m[28C[0K127.0.0.1:6379> GET added-tod[0;90;49m [0m[29C[0K127.0.0.1:6379> GET added-todo[0;90;49m [0m[30C[0K127.0.0.1:6379> GET added-todos[0;90;49m [0m[31C[0K127.0.0.1:6379> GET added-todos[31C
+"4"
+127.0.0.1:6379> [0K127.0.0.1:6379> S[17C[0K127.0.0.1:6379> SE[18C[0K127.0.0.1:6379> SET[0;90;49m key value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[19C[0K127.0.0.1:6379> SET [0;90;49mkey value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[20C[0K127.0.0.1:6379> SET a[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[21C[0K127.0.0.1:6379> SET ad[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[22C[0K127.0.0.1:6379> SET add[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[23C[0K127.0.0.1:6379> SET adde[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[24C[0K127.0.0.1:6379> SET added[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[25C[0K127.0.0.1:6379> SET added-[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[26C[0K127.0.0.1:6379> SET added-t[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[27C[0K127.0.0.1:6379> SET added-to[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[28C[0K127.0.0.1:6379> SET added-tod[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[29C[0K127.0.0.1:6379> SET added-todo[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[30C[0K127.0.0.1:6379> SET added-todos[0;90;49m value [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[31C[0K127.0.0.1:6379> SET added-todos [0;90;49mvalue [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[32C[0K127.0.0.1:6379> SET added-todos "[33C[0K127.0.0.1:6379> SET added-todos "9[34C[0K127.0.0.1:6379> SET added-todos "90[35C[0K127.0.0.1:6379> SET added-todos "900[36C[0K127.0.0.1:6379> SET added-todos "9001[37C[0K127.0.0.1:6379> SET added-todos "9001"[0;90;49m [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[38C[0K127.0.0.1:6379> SET added-todos "9001"[38C
+OK
+127.0.0.1:6379> [0K127.0.0.1:6379> SET added-todos "9001"[0;90;49m [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|KEEPTTL] [NX|XX] [GET][0m[38C[0K127.0.0.1:6379> GET added-todos[0;90;49m [0m[31C[0K127.0.0.1:6379> GET added-todos[31C
+"9001"
+127.0.0.1:6379> [0K127.0.0.1:6379> e[17C[0K127.0.0.1:6379> ex[18C[0K127.0.0.1:6379> exi[19C[0K127.0.0.1:6379> exit[20C[0K127.0.0.1:6379> exit[20C
+[?2004hroot@f89b04340e61:/data# curl -s l htpp  tp://localhost:3000/statistics | jq
+[?2004lbash: curl: command not found
+bash: jq: command not found
+[?2004hroot@f89b04340e61:/data# exit
+[?2004lexit
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -s http://localhost:3000 [K/statistics | jq
+[1;39m{
+  [0m[34;1m"added_todos"[0m[1;39m: [0m[0;39m9001[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -sX POST http://localhost:3000/todos -H 'Content-Type: application/json' -d '{"text":"test3"}' | jq[C[C[1P[1P[1P[1P[1P[1@A[1@n[1@d[1@ [1@d[1@o[1@ [1@t[1@h[1@i[1@s[1@ [1@t[1@h[1@i[1@n[1@g[1@ [1@i[1@n[1@ [1@a[1@d[1@d[1@i[1@t[1@i[1@o[1@n
+[1;39m{
+  [0m[34;1m"_id"[0m[1;39m: [0m[0;32m"62e8f5600063c74a194a8b45"[0m[1;39m,
+  [0m[34;1m"text"[0m[1;39m: [0m[0;32m"And do this thing in addition"[0m[1;39m,
+  [0m[34;1m"done"[0m[1;39m: [0m[0;39mfalse[0m[1;39m,
+  [0m[34;1m"__v"[0m[1;39m: [0m[0;39m0[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -sX POST http://localhost:3000/todos -H 'Content-Type: application/json' -d '{"text":"And do this thing in addition"}' | jq[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C http://localhost:3000/statistics | jq[K
+[1;39m{
+  [0m[34;1m"added_todos"[0m[1;39m: [0m[0;39m9002[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ docker exec -it f89b bash
+[?2004hroot@f89b04340e61:/data# [Kroot@f89b04340e61:/data# redis-cli
+[?2004l127.0.0.1:6379> [0K127.0.0.1:6379> G[17C[0K127.0.0.1:6379> GE[18C[0K127.0.0.1:6379> GET[0;90;49m key[0m[19C[0K127.0.0.1:6379> GET [0;90;49mkey[0m[20C[0K127.0.0.1:6379> GET a[0;90;49m [0m[21C[0K127.0.0.1:6379> GET ad[0;90;49m [0m[22C[0K127.0.0.1:6379> GET add[0;90;49m [0m[23C[0K127.0.0.1:6379> GET adde[0;90;49m [0m[24C[0K127.0.0.1:6379> GET added[0;90;49m [0m[25C[0K127.0.0.1:6379> GET added-[0;90;49m [0m[26C[0K127.0.0.1:6379> GET added-t[0;90;49m [0m[27C[0K127.0.0.1:6379> GET added-to[0;90;49m [0m[28C[0K127.0.0.1:6379> GET added-tod[0;90;49m [0m[29C[0K127.0.0.1:6379> GET added-todo[0;90;49m [0m[30C[0K127.0.0.1:6379> GET added-todos[0;90;49m [0m[31C[0K127.0.0.1:6379> GET added-todos[31C
+"9002"
+127.0.0.1:6379> [0K127.0.0.1:6379> D[17C[0K127.0.0.1:6379> DE[18C[0K127.0.0.1:6379> DEL[0;90;49m key [key ...][0m[19C[0K127.0.0.1:6379> DEL [0;90;49mkey [key ...][0m[20C[0K127.0.0.1:6379> DEL a[0;90;49m [key ...][0m[21C[0K127.0.0.1:6379> DEL ad[0;90;49m [key ...][0m[22C[0K127.0.0.1:6379> DEL add[0;90;49m [key ...][0m[23C[0K127.0.0.1:6379> DEL adde[0;90;49m [key ...][0m[24C[0K127.0.0.1:6379> DEL added[0;90;49m [key ...][0m[25C[0K127.0.0.1:6379> DEL added-[0;90;49m [key ...][0m[26C[0K127.0.0.1:6379> DEL added-t[0;90;49m [key ...][0m[27C[0K127.0.0.1:6379> DEL added-to[0;90;49m [key ...][0m[28C[0K127.0.0.1:6379> DEL added-tod[0;90;49m [key ...][0m[29C[0K127.0.0.1:6379> DEL added-todo[0;90;49m [key ...][0m[30C[0K127.0.0.1:6379> DEL added-todos[0;90;49m [key ...][0m[31C[0K127.0.0.1:6379> DEL added-todos[31C
+(integer) 1
+127.0.0.1:6379> [0K127.0.0.1:6379> e[17C[0K127.0.0.1:6379> [16C[0K127.0.0.1:6379> DEL added-todos[0;90;49m [key ...][0m[31C[0K127.0.0.1:6379> GET added-todos[0;90;49m [0m[31C[0K127.0.0.1:6379> GET added-todos[31C
+(nil)
+127.0.0.1:6379> [0K127.0.0.1:6379> e[17C[0K127.0.0.1:6379> ex[18C[0K127.0.0.1:6379> exi[19C[0K127.0.0.1:6379> exit[20C[0K127.0.0.1:6379> exit[20C
+[?2004hroot@f89b04340e61:/data# [7mcurl -s http://localhost:3000/statistics | jq[27mroot@f89b04340e61:/data# curl -s http://localhost:3000/statistics | jqq
+[?2004lbash: jq: command not found
+bash: curl: command not found
+[?2004hroot@f89b04340e61:/data# exit
+[?2004lexit
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -s http://localhost:3000/statistics | jq
+[1;39m{
+  [0m[34;1m"added_todos"[0m[1;39m: [0m[0;39m0[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -sX POST http://localhost:3000/todos -H 'Content-Type: application/json' -d '{"text":"And do this thing in addition"}' | jq
+[1;39m{
+  [0m[34;1m"_id"[0m[1;39m: [0m[0;32m"62e8f5a80063c74a194a8b47"[0m[1;39m,
+  [0m[34;1m"text"[0m[1;39m: [0m[0;32m"And do this thing in addition"[0m[1;39m,
+  [0m[34;1m"done"[0m[1;39m: [0m[0;39mfalse[0m[1;39m,
+  [0m[34;1m"__v"[0m[1;39m: [0m[0;39m0[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ curl -sX POST http://localhost:3000/todos -H 'Content-Type: application/json' -d '{"text":"And do this thing in addition"}' | jq[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C http://localhost:3000/statistics | jq[K
+[1;39m{
+  [0m[34;1m"added_todos"[0m[1;39m: [0m[0;39m1[0m[1;39m
+[1;39m}[0m
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ ei[Kxit
+exit
+
+Script done on 2022-08-02 13:00:15+03:00 [COMMAND_EXIT_CODE="0"]

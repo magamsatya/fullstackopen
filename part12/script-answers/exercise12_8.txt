@@ -1,0 +1,73 @@
+Script started on 2022-08-02 11:46:48+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="209" LINES="58"]
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ exitdocker-compose -f docker-compose.dev.yml -d up[K[K[K[K[Kup -d
+Creating network "todo-backend_default" with the default driver
+Creating todo-backend_mongo_1 ... 
+[1A[2KCreating todo-backend_mongo_1 ... [32mdone[0m[1B]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ d[Kdocker container ls -a
+CONTAINER ID   IMAGE                      COMMAND                  CREATED              STATUS                   PORTS                                                                    NAMES
+00662edb7c8b   mongo                      "docker-entrypoint.s…"   About a minute ago   Up About a minute        0.0.0.0:3456->27017/tcp                                                  todo-backend_mongo_1
+a1cc9e2c0b0e   ubuntu                     "bash"                   2 hours ago          Exited (0) 2 hours ago                                                                            nervous_ramanujan
+40b25a1fe745   rancher/k3d-proxy:5.2.2    "/bin/sh -c nginx-pr…"   6 months ago         Up 2 hours               0.0.0.0:8081->80/tcp, 0.0.0.0:40261->6443/tcp, 0.0.0.0:8082->30080/tcp   k3d-k3s-default-serverlb
+1d390207d55f   rancher/k3s:v1.21.7-k3s1   "/bin/k3s agent"         6 months ago         Up 2 hours                                                                                        k3d-k3s-default-agent-1
+028b625bd56e   rancher/k3s:v1.21.7-k3s1   "/bin/k3s agent"         6 months ago         Up 2 hours                                                                                        k3d-k3s-default-agent-0
+c4f40be96c5e   rancher/k3s:v1.21.7-k3s1   "/bin/k3s server --t…"   6 months ago         Up 2 hours                                                                                        k3d-k3s-default-server-0
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ docker exec -it 0066 bash
+]0;root@00662edb7c8b: /root@00662edb7c8b:/# mongo -u root -p example
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6f2509dc-bf15-4503-ace3-0912bee8beaf") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+---
+The server generated these startup warnings when booting: 
+        2022-08-02T08:46:55.869+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2022-08-02T08:46:56.127+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use the_database[3G[Juse the_database[19G
+switched to db the_database
+> show collections[3G[Jshow collections[19G
+todos
+> db.todos.find([}[3G[Jdb.todos.find([[18G[3G[Jdb.todos.find([17G[}[3G[Jdb.todos.find([[18G[3G[Jdb.todos.find([17G{})[3G[Jdb.todos.find({})[20G
+{ "_id" : ObjectId("62e8d62ed326c87ae7294329"), "text" : "Write code", "done" : true }
+{ "_id" : ObjectId("62e8d62ed326c87ae729432a"), "text" : "Learn about containers", "done" : false }
+{ "_id" : ObjectId("62e8dea550fe7c30d96d8652"), "text" : "Do this also 2", "__v" : 0, "done" : true }
+> db.todos.insertOne()[3G[Jdb.todos.insertOne[1;34m([0m)[22G[3G[Jdb.todos.insertOne([1;34m{[0m)[23G[3G[Jdb.todos.insertOne[1;34m([0m{})[24G[3G[Jdb.todos.insertOne([1;34m{[0m})[23G[3G[Jdb.todos.insertOne([1;34m{[0m })[24G[3G[Jdb.todos.insertOne([1;34m{[0m t})[25G[3G[Jdb.todos.insertOne([1;34m{[0m te})[26G[3G[Jdb.todos.insertOne([1;34m{[0m tex})[27G[3G[Jdb.todos.insertOne([1;34m{[0m te})[26G[3G[Jdb.todos.insertOne([1;34m{[0m t})[25G[3G[Jdb.todos.insertOne([1;34m{[0m })[24G[3G[Jdb.todos.insertOne([1;34m{[0m t})[25G[3G[Jdb.todos.insertOne([1;34m{[0m te})[26G[3G[Jdb.todos.insertOne([1;34m{[0m tex})[27G[3G[Jdb.todos.insertOne([1;34m{[0m text})[28G[3G[Jdb.todos.insertOne([1;34m{[0m text:})[29G[3G[Jdb.todos.insertOne([1;34m{[0m text: })[30G[3G[Jdb.todos.insertOne([1;34m{[0m text: "})[31G[3G[Jdb.todos.insertOne([1;34m{[0m text: "I})[32G[3G[Jdb.todos.insertOne([1;34m{[0m text: "In})[33G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Inc})[34G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Incr})[35G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Incre})[36G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increa})[37G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increas})[38G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase})[39G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase })[40G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase t})[41G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase th})[42G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the})[43G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the })[44G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the n})[45G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the nu})[46G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the num})[47G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the numb})[48G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the numbe})[49G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number})[50G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number })[51G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number o})[52G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of})[53G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of })[54G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of t})[55G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of to})[56G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of too})[57G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tool})[58G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools})[59G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools })[60G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools i})[61G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in})[62G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in })[63G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in m})[64G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my})[65G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my })[66G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my t})[67G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my to})[68G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my too})[69G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my tool})[70G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolb})[71G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbe})[72G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbel})[73G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt})[74G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt"})[75G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt",})[76G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", })[77G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", s})[78G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", })[77G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", d})[78G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", do})[79G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", don})[80G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done})[81G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done:})[82G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: })[83G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: f})[84G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: fa})[85G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: fal})[86G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: fals})[87G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: false})[88G[3G[Jdb.todos.insertOne([1;34m{[0m text: "Increase the number of tools in my toolbelt", done: false })[89G[3G[Jdb.todos.insertOne[1;34m([0m{ text: "Increase the number of tools in my toolbelt", done: false })[90G[3G[Jdb.todos.insertOne({ text: "Increase the number of tools in my toolbelt", done: false })[91G[3G[Jdb.todos.insertOne({ text: "Increase the number of tools in my toolbelt", done: false })[91G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("62e8e589daedf5bf4d21d7a0")
+}
+> [3G[Jdb.todos.insertOne({ text: "Increase the number of tools in my toolbelt", done: false })[91G[3G[Jdb.todos.find({})[20G[3G[Jdb.todos.find({})[20G
+{ "_id" : ObjectId("62e8d62ed326c87ae7294329"), "text" : "Write code", "done" : true }
+{ "_id" : ObjectId("62e8d62ed326c87ae729432a"), "text" : "Learn about containers", "done" : false }
+{ "_id" : ObjectId("62e8dea550fe7c30d96d8652"), "text" : "Do this also 2", "__v" : 0, "done" : true }
+{ "_id" : ObjectId("62e8e589daedf5bf4d21d7a0"), "text" : "Increase the number of tools in my toolbelt", "done" : false }
+> exit[3G[Jexit[7G
+bye
+]0;root@00662edb7c8b: /root@00662edb7c8b:/# exit
+exit
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/todo-app/todo-backend[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/todo-app/todo-backend[00m$ exit
+exit
+
+Script done on 2022-08-02 11:51:54+03:00 [COMMAND_EXIT_CODE="0"]

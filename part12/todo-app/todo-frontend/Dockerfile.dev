@@ -1,0 +1,14 @@
+FROM node:16
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+ENV REACT_APP_BACKEND_URL=http://localhost:3000 \
+    PORT=80
+
+CMD ["npm", "start"]
+
+EXPOSE 80

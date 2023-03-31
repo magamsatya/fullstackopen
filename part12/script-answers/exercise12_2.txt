@@ -1,0 +1,13 @@
+Script started on 2022-08-02 09:50:50+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="209" LINES="58"]
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/script-answers[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/script-answers[00m$ docker run -it ubuntu bash
+]0;root@a1cc9e2c0b0e: /root@a1cc9e2c0b0e:/# mkdir /usr/src/app
+]0;root@a1cc9e2c0b0e: /root@a1cc9e2c0b0e:/# touch /usr/src/app/indezx  x.js
+]0;root@a1cc9e2c0b0e: /root@a1cc9e2c0b0e:/# [Kcd /usr/src/app
+]0;root@a1cc9e2c0b0e: /usr/src/approot@a1cc9e2c0b0e:/usr/src/app# ls
+index.js
+]0;root@a1cc9e2c0b0e: /usr/src/approot@a1cc9e2c0b0e:/usr/src/app# exit
+exit
+]0;mtuomiko@DESKTOP-C560V6B: ~/study/full-stack-open-part-12/script-answers[01;32mmtuomiko@DESKTOP-C560V6B[00m:[01;34m~/study/full-stack-open-part-12/script-answers[00m$ exit
+exit
+
+Script done on 2022-08-02 09:52:20+03:00 [COMMAND_EXIT_CODE="0"]
